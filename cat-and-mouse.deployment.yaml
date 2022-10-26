@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: cat-and-mouse
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: cat-and-mouse
+  template:
+    metadata:
+      labels:
+        app: cat-and-mouse
+    spec:
+      containers:
+      - image: falanteris/cat-and-mouse-game:master
+        name: cat-and-mouse-app-container
+        ports:
+        - containerPort: 80
